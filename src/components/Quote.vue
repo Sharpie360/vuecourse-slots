@@ -1,6 +1,12 @@
 <template>
-  <div>
-    <slot></slot>
+  <div class="outer">
+    <div class="title">
+      <slot name="title"></slot>
+    </div>
+    <hr>
+    <div class="content">
+      <slot name="content"></slot>  
+    </div>
   </div>
 </template>
 
@@ -11,7 +17,8 @@
 </script>
 
 <style scoped>
-  div {
-    border: 3px solid #212121
+  .outer {
+    border: 1rem solid #212121
   }
+
 </style>
