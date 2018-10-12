@@ -10,7 +10,7 @@
                 {{ selectedComponent }}
                 <component :is="selectedComponent">
                     <h1 slot="title">{{ quoteTitle }}</h1>
-                    <h3 class="content" slot="content">...not quite yet</h3 "">
+                    <h3 class="content" slot="content">...not quite yet</h3>
 
                 </component>
                <!-- <app-quote class="cmp--Quote">
