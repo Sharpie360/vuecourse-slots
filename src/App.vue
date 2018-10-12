@@ -2,10 +2,21 @@
     <div class="container">
         <div class="row">
             <div>
-               <app-quote class="cmp--Quote">
+                <div id="view-btns">
+                    <button @click="selectedComponent = 'app-quote'">Quote</button>
+                    <button @click="selectedComponent = 'app-author'">Author</button>
+                    <button @click="selectedComponent = 'app-new'">New Quote</button>
+                </div>
+                {{ selectedComponent }}
+                <component :is="selectedComponent">
+                    <h1 slot="title">{{ quoteTitle }}</h1>
+                    <h3 class="content" slot="content">...not quite yet</h3>
+
+                </component>
+               <!-- <app-quote class="cmp--Quote">
                    <h1 class="cmp--Quote-title" slot="title">{{ quoteTitle }}</h1>
                    <h4 class="cmp--Quote-content" slot="content">...not quite yet</h4>
-               </app-quote>
+               </app-quote> -->
             </div>
         </div>
     </div>
@@ -13,14 +24,19 @@
 
 <script>
     import Quote from './components/Quote.vue'
+    import Author from './components/Author.vue'
+    import New from './components/New.vue'
     export default {
         data () {
             return {
-                quoteTitle: 'An Awesome Quote'
+                quoteTitle: 'An Awesome Quote',
+                selectedComponent: 'app-quote'
             }
         },
         components: {
-            'app-quote': Quote
+            'app-quote': Quote,
+            'app-author': Author,
+            'app-new': New
         }
     }
 </script>
@@ -41,7 +57,8 @@
         background-color: #006473;
         display: flex;
         flex: 1;
-        justify-content: center
+        justify-content: center;
+        text-align: center;
     }
     h1, h2, h3, h4, h5, h6 {
         font-weight: 200;
@@ -51,25 +68,6 @@
     .container {
         width: 70%;
     }
-    .cmp--Quote {
-        background-color: #03A9AC;
-        margin: 1rem 0;
-        padding: 1rem;
-
-        width: 100%;
-        text-align: center;
-
-        box-shadow: 0px 0px 25px rgba(247, 247, 247, .0);
-        transition: box-shadow 0.1s;
-
-        border-radius: .75rem;
-    }
-    .cmp--Quote:hover {
-        box-shadow: 0px 0px 25px rgba(247, 247, 247, .5);
-    }
-
-    .cmp--Quote-content {
-        font-weight: 400;
-    }
+    
 
 </style>
