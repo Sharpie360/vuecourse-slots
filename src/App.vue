@@ -8,16 +8,17 @@
                     <button @click="selectedComponent = 'app-new'">New Quote</button>
                 </div>
                 {{ selectedComponent }}
-                <component :is="selectedComponent">
-                    <h1 slot="title">{{ quoteTitle }}</h1>
-                    <h3 class="content" slot="content">...not quite yet</h3>
-
-                </component>
+                <keep-alive>
+                    <component :is="selectedComponent">
+                        <h1 slot="title">{{ quoteTitle }}</h1>
+                        <h3 class="content" slot="content">...not quite yet</h3>
+                    </component>
+                </keep-alive>
                <!-- <app-quote class="cmp--Quote">
                    <h1 class="cmp--Quote-title" slot="title">{{ quoteTitle }}</h1>
                    <h4 class="cmp--Quote-content" slot="content">...not quite yet</h4>
                </app-quote> -->
-            </div>
+            </div> 
         </div>
     </div>
 </template>
